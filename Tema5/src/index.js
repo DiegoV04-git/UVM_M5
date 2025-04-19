@@ -3,7 +3,15 @@ import './estilo.css'
 import Imagen from './calendar.jpg';
 import './estilo.scss';
 
-
+if('serviceWoker' in navigator){
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./serviceWorker.js').then(registration => {
+            console.log('SW registrado con exito', registration);
+        }).catch(err => {
+            console.log('SW fallido', err);
+        });
+    });
+}
 
 function componente(){
     const elemento = document.createElement('div');
